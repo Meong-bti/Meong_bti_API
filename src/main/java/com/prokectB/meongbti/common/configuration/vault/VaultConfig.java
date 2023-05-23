@@ -1,4 +1,4 @@
-package com.prokectB.meongbti.configuration.vault;
+package com.prokectB.meongbti.common.configuration.vault;
 
 import com.prokectB.meongbti.common.dto.VaultCredential;
 import com.prokectB.meongbti.common.dto.VaultProps;

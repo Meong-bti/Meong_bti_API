@@ -1,4 +1,4 @@
-package com.prokectB.meongbti.configuration.advice;
+package com.prokectB.meongbti.common.configuration.advice;
 
 
 import lombok.Getter;
