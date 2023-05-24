@@ -23,6 +23,8 @@ public class Member {
     private String nickname;
 
     private String password;
+
+    private OAuthProvider oAuthProvider;
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime joinedAt;
@@ -33,10 +35,11 @@ public class Member {
     }
 
     @Builder
-    public Member(String email, String password, String nickname) {
+    public Member(String email, String password, String nickname, OAuthProvider oAuthProvider) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
+        this.oAuthProvider = oAuthProvider;
 
     }
 

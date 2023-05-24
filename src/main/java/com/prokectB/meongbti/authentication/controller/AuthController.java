@@ -2,6 +2,9 @@ package com.prokectB.meongbti.authentication.controller;
 
 import com.prokectB.meongbti.authentication.dto.LoginDto;
 
+import com.prokectB.meongbti.authentication.oauth.token.AuthTokens;
+import com.prokectB.meongbti.authentication.oauth.KakaoLoginParams;
+import com.prokectB.meongbti.authentication.oauth.service.OAuthLoginService;
 import com.prokectB.meongbti.authentication.response.AccessTokenResponse;
 import com.prokectB.meongbti.authentication.service.AuthService;
 import com.prokectB.meongbti.common.exception.unauthorized.RefreshTokenNotExistsException;
@@ -23,7 +26,7 @@ public class AuthController {
 
     private final AuthService authService;
     private final RefreshTokenCookieProvider refreshTokenCookieProvider;
-
+    private final OAuthLoginService oAuthLoginService;
     @PostMapping("/login")
     public ResponseEntity<AccessTokenResponse> login(@RequestBody LoginRequest loginRequest) {
         LoginDto loginDto = authService.login(loginRequest.getEmail(), loginRequest.getPassword());
@@ -60,4 +63,11 @@ public class AuthController {
             throw new RefreshTokenNotExistsException();
         }
     }
+
+    @PostMapping("/kakao")
+    public ResponseEntity<AuthTokens> loginKakao(@RequestBody KakaoLoginParams params) {
+        return ResponseEntity.ok(oAuthLoginService.login(params));
+    }
+
+
 }
