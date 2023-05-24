@@ -20,13 +20,13 @@ public class RefreshTokenRepositoryImpl implements RefreshTokenRepository {
     private static final RowMapper<RefreshToken> rowMapper = (rs, rowNum) -> RefreshToken.builder()
             .tokenValue(rs.getString("token_value"))
             .expiredAt(rs.getTimestamp("expired_at").toLocalDateTime())
-            .memberId(rs.getLong("user_id"))
+            .memberId(rs.getLong("member_id"))
             .build();
 
     @Override
     public RefreshToken save(RefreshToken refreshToken) {
         String sql = String.format(
-                "INSERT INTO %s (token_value, expired_at, user_id)" +
+                "INSERT INTO %s (token_value, expired_at, member_id)" +
                         " VALUES (:tokenValue, :expiredAt, :memberId)",
                 TABLE_NAME);
         BeanPropertySqlParameterSource parameterSource = new BeanPropertySqlParameterSource(refreshToken);
@@ -41,7 +41,7 @@ public class RefreshTokenRepositoryImpl implements RefreshTokenRepository {
     public Optional<RefreshToken> findTokenByTokenValue(String tokenValue) {
         String sql = String.format(
               "SELECT token_value, expired_at, " +
-                      "user_id FROM %s WHERE token_value = :token_value",
+                      "member_id FROM %s WHERE token_value = :token_value",
                 TABLE_NAME);
         SqlParameterSource namedParameters = new MapSqlParameterSource("token_value", tokenValue);
         List<RefreshToken> results = namedParameterJdbcTemplate.query(sql, namedParameters, rowMapper);
