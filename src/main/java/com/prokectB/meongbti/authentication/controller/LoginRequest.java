@@ -1,9 +1,11 @@
-package com.prokectB.meongbti.common.presentation.auth.request;
+package com.prokectB.meongbti.authentication.controller;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class LoginRequest {
 
     String email;

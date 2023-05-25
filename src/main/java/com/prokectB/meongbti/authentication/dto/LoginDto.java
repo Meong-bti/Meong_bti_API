@@ -1,4 +1,4 @@
-package com.prokectB.meongbti.common.presentation.auth.common;
+package com.prokectB.meongbti.authentication.dto;
 
 
 import lombok.Builder;
