@@ -37,7 +37,13 @@ public class PostWriteService {
         }
         return PostDto.from(post);
     }
+    public void upLikeCount(Post post) {
+        post.incrementLikeCount();
+    }
 
+    public void downLikeCount(Post post) {
+        post.decrementLikeCount();
+    }
     private static void checkWriter(Member member, Post post) {
         if (!post.isWriter(member)) {
             throw new NotPostWriterException();
