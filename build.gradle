@@ -3,6 +3,9 @@ plugins {
 	id 'org.springframework.boot' version '2.7.12'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id "org.asciidoctor.jvm.convert" version "3.3.2"
+	//querydsl 추가
+	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+
 }
 
 group = 'com.prokectB'
@@ -57,15 +60,14 @@ dependencies {
 	implementation 'org.springframework.security:spring-security-crypto'
 
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+
+	//querydsl 추가
+	implementation "com.querydsl:querydsl-jpa:5.0.0"
+	implementation "com.querydsl:querydsl-apt:5.0.0"
 }
 
 test {
-	outputs.dir snippetsDir
-	useJUnitPlatform()
-}
-
-
-tasks.named('test') {
 	outputs.dir snippetsDir
 	useJUnitPlatform()
 }
@@ -80,23 +82,14 @@ asciidoctor {
 	dependsOn test
 }
 
-
-
 task copyDocument(type: Copy) {
 	dependsOn asciidoctor
 	from file("${asciidoctor.outputDir}")
-	into file("src/main/resources/static/docs")
+	into file("build/resources/main/static/docs")
 }
-
-
-build {
-	dependsOn copyDocument
-}
-
 
 bootJar {
 	dependsOn copyDocument
-
 }
 
 jar {
@@ -109,4 +102,28 @@ task dolocal {
 		from asciidoctor.outputDir
 		into "src/main/resources/static/docs"
 	}
+}
+
+def querydslDir = "$buildDir/generated/querydsl"
+querydsl {
+	jpa = true
+	querydslSourcesDir = querydslDir
+}
+sourceSets {
+	main.java.srcDir querydslDir
+}
+compileQuerydsl{
+	options.annotationProcessorPath = configurations.querydsl
+}
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+	querydsl.extendsFrom compileClasspath
+}
+//querydsl 추가 끝
+
+jar {
+	archiveFileName = 'meongbti.jar'
+	enabled = false
 }

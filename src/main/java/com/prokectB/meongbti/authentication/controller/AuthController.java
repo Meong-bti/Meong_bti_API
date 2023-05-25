@@ -1,19 +1,19 @@
 package com.prokectB.meongbti.authentication.controller;
 
-import com.prokectB.meongbti.authentication.dto.LoginDto;
+import com.prokectB.meongbti.dto.common.LoginDto;
 
 import com.prokectB.meongbti.authentication.response.AccessTokenResponse;
-import com.prokectB.meongbti.authentication.service.AuthService;
-import com.prokectB.meongbti.common.exception.unauthorized.RefreshTokenNotExistsException;
+import com.prokectB.meongbti.application.auth.service.AuthService;
+import com.prokectB.meongbti.exception.unauthorized.RefreshTokenNotExistsException;
 
-import com.prokectB.meongbti.common.presentation.auth.RefreshTokenCookieProvider;
+import com.prokectB.meongbti.presentation.auth.RefreshTokenCookieProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import static com.prokectB.meongbti.common.presentation.auth.RefreshTokenCookieProvider.REFRESH_TOKEN;
+import static com.prokectB.meongbti.presentation.auth.RefreshTokenCookieProvider.REFRESH_TOKEN;
 
 
 @RestController
