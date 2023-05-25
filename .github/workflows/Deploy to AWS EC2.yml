@@ -7,7 +7,7 @@ on:
 
 env:
   AWS_REGION: ap-northeast-2
-  S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
+  S3_BUCKET_NAME: s3-bucket-action
   CODE_DEPLOY_APPLICATION_NAME: my-codedeploy-app
   CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: my-codedeploy-deployment-group
 
@@ -33,8 +33,8 @@ jobs:
       - name: Make application-prd.properties
         run: |
           cd ./src/main/resources 
-          touch ./application-prd.properties 
-          echo "${{ secrets.PROPERTIES_PRD }}" > ./application-prd.properties
+          touch ./application-prd.yml 
+          echo "${{ secrets.PROPERTIES_PRD }}" > ./application-prd.yml
         shell: bash
 
       - name: Make gradlew executable
