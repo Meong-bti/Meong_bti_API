@@ -1,11 +1,11 @@
 package com.prokectB.meongbti.member;
 
-import com.prokectB.meongbti.common.exception.badrequest.DuplicatedUserException;
-import com.prokectB.meongbti.member.controller.request.UserJoinRequest;
-import com.prokectB.meongbti.member.dto.response.UserResponse;
-import com.prokectB.meongbti.member.entity.Member;
-import com.prokectB.meongbti.member.repository.MemberRepository;
-import com.prokectB.meongbti.member.service.MemberWriteService;
+import com.prokectB.meongbti.exception.badrequest.DuplicatedUserException;
+import com.prokectB.meongbti.dto.request.member.UserJoinRequest;
+import com.prokectB.meongbti.dto.response.member.UserResponse;
+import com.prokectB.meongbti.domain.Member.entity.Member;
+import com.prokectB.meongbti.domain.Member.repository.MemberRepository;
+import com.prokectB.meongbti.domain.Member.service.MemberWriteService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

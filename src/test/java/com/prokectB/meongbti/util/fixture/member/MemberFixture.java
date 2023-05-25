@@ -1,6 +1,6 @@
 package com.prokectB.meongbti.util.fixture.member;
 
-import com.prokectB.meongbti.member.entity.Member;
+import com.prokectB.meongbti.domain.Member.entity.Member;
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 

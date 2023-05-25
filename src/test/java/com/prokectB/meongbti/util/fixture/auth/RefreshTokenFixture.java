@@ -1,6 +1,6 @@
 package com.prokectB.meongbti.util.fixture.auth;
 
-import com.prokectB.meongbti.authentication.token.RefreshToken;
+import com.prokectB.meongbti.application.auth.token.RefreshToken;
 
 import java.time.LocalDateTime;
 

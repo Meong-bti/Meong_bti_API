@@ -1,9 +1,9 @@
 package com.prokectB.meongbti.auth;
 
 
-import com.prokectB.meongbti.authentication.token.AuthTokenExtractor;
-import com.prokectB.meongbti.authentication.token.JwtTokenProvider;
-import com.prokectB.meongbti.common.exception.unauthorized.TokenExpiredException;
+import com.prokectB.meongbti.application.auth.token.AuthTokenExtractor;
+import com.prokectB.meongbti.application.auth.token.JwtTokenProvider;
+import com.prokectB.meongbti.exception.unauthorized.TokenExpiredException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
