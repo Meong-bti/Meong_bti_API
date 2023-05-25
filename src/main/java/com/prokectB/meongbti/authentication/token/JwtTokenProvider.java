@@ -41,6 +41,31 @@ public class JwtTokenProvider implements TokenProvider {
                 .compact();
     }
 
+    public String generate(String subject, Date expiredAt) {
+        return Jwts.builder()
+                .setSubject(subject)
+                .setExpiration(expiredAt)
+                .signWith(secretKey, SignatureAlgorithm.HS512)
+                .compact();
+    }
+
+    public String extractSubject(String accessToken) {
+        Claims claims = parseClaims(accessToken);
+        return claims.getSubject();
+    }
+
+
+    private Claims parseClaims(String accessToken) {
+        try {
+            return Jwts.parserBuilder()
+                    .setSigningKey(secretKey)
+                    .build()
+                    .parseClaimsJws(accessToken)
+                    .getBody();
+        } catch (ExpiredJwtException e) {
+            return e.getClaims();
+        }
+    }
     @Override
     public boolean isValidToken(String authorizationHeader) {
         String token = authTokenExtractor.extractToken(authorizationHeader);
