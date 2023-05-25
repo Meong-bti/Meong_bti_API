@@ -1,6 +1,6 @@
 package com.prokectB.meongbti.common.exception.forbidden;
 
-import com.prokectB.meongbti.configuration.advice.CustomException;
+import com.prokectB.meongbti.common.configuration.advice.CustomException;
 
 public class ForbiddenException extends CustomException {
 

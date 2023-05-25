@@ -1,7 +1,7 @@
 package com.prokectB.meongbti.common.presentation;
 
 import com.prokectB.meongbti.common.dto.response.ErrorResponse;
-import com.prokectB.meongbti.configuration.advice.CustomException;
+import com.prokectB.meongbti.common.configuration.advice.CustomException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
